@@ -14,57 +14,116 @@
         box-sizing: border-box;
        }
 
-header {
+/*** T H E - M A G I C - O F - O B J E C T - F I T ***/
+/*****************************************************/
+
+.video-container {
+  height: 50vh;
   position: relative;
-  background-color: black;
-  height: 75vh;
-  min-height: 25rem;
-  width: 100%;
   overflow: hidden;
+  @media(min-width: 600px) {
+    height: 100vh;
+  }
 }
 
-header video {
+video {
+  object-fit: cover; // Set the magic
   position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: 0;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
-header .container {
-  position: relative;
-  z-index: 2;
+
+
+
+
+
+
+
+
+/*** A E S T H E T I C S ***/
+/***************************/
+
+* {
+  box-sizing: border-box;
 }
 
-header .overlay {
+body {
+  background: #333;
+  color: white;
+}
+
+.video-container:after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: black;
-  opacity: 0.5;
+  background: rgba(black, .2);
   z-index: 1;
 }
 
-/* Media Query for devices withi coarse pointers and no hover functionality */
-
-/* This will use a fallback image instead of a video for devices that commonly do not support the HTML5 video element */
-
-@media (pointer: coarse) and (hover: none) {
-  header {
-    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+h1 {
+  text-transform: uppercase;
+  font-weight: 900;
+  margin: 0 0 1rem;
+  padding: 0;
+  line-height: 1;
+  font-family: Futura, Helvetica, sans-serif;
+  font-size: 5vw;
+  @media (max-width: 400px) {
+    font-size: 22px;
   }
+  @media (min-width: 1200px) {
+    font-size: 75px;
+  }
+}
 
-  header video {
-    display: none;
+.callout {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.support {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-align: right;
+  position: relative;
+  z-index: 10;
+  a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+    &:before {
+      display: block;
+      position: absolute;
+      content: '';
+      bottom: -2px;
+      width: 0;
+      height: 1px;
+      background-color: rgba(white, .3);
+      transition: .3s;
+    }
+    &:hover:before {
+      width: 100%;
+    }
   }
 }
 
@@ -76,41 +135,15 @@ header .overlay {
   <body>
    
 
- <header>
-
-  <!-- This div is  intentionally blank. It creates the transparent black overlay over the video which you can modify in the CSS -->
-  <div class="overlay"></div>
-
-  <!-- The HTML5 video element that will create the background video on the header -->
- <video autoplay muted loop id="myVideo">
-        <source src="https://user-images.githubusercontent.com/54853098/152940811-c4a08617-02a9-41a9-8147-3d59d2760f79.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-        </video>
-
-  <!-- The header content -->
-  <div class="container h-100">
-    <div class="d-flex h-100 text-center align-items-center">
-      <div class="w-100 text-white">
-        <h1 class="display-3">Video Header</h1>
-        <p class="lead mb-0">Using HTML5 Video and Bootstrap</p>
-      </div>
-    </div>
+<section class="video-container">
+  <video src="https://player.vimeo.com/external/181445574.hd.mp4?s=d24f32d879305e931468d55e4d7ce6efb5a95c39&amp;profile_id=119" autoplay loop playsinline muted></video>
+  <div class="callout">
+    <h1>Object-Fit 👍</h1>
+    <div>The CSS Background-Size: Cover for Inline Images &amp; Videos</div>
   </div>
-</header>
-
-<!-- Page section example for content below the video header -->
-<section class="my-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 mx-auto">
-        <p>The HTML5 video element uses an mp4 video as a source. Change the source video to add in your own background! The header text is vertically centered using flex utilities that are built into Bootstrap.</p>
-        <p>The overlay color and opacity can be changed by modifying the <code>background-color</code> and <code>opacity</code> properties of the <code>.overlay</code> class in the CSS.</p>
-        <p>Set the mobile fallback image in the CSS by changing the background image of the header element within the media query at the bottom of the CSS snippet.</p>
-        <p class="mb-0">
-          Created by <a href="https://startbootstrap.com">Start Bootstrap</a>
-        </p>
-      </div>
-    </div>
+  <div class="support">
+     <a href="http://caniuse.com/#search=object-fit">Browser Support</a><br>
+     <a href="https://github.com/jonathantneal/fitie">Need to support IE &amp; Edge?</a>
   </div>
 </section>
 
