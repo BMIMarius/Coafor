@@ -14,117 +14,74 @@
         box-sizing: border-box;
        }
 
-/*** T H E - M A G I C - O F - O B J E C T - F I T ***/
-/*****************************************************/
-
-.video-container {
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  @media(min-width: 600px) {
-    height: 100vh;
-  }
-}
-
-video {
-  object-fit: cover; // Set the magic
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-}
-
-
-
-
-
-
-
-
-
-/*** A E S T H E T I C S ***/
-/***************************/
-
-* {
-  box-sizing: border-box;
-}
-
 body {
-  background: #333;
-  color: white;
+  margin: 0;
+  padding: 0;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/148422/screencap-wheel.png) #fff;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
-.video-container:after {
-  content: '';
-  display: block;
-  height: 100%;
-  width: 100%;
+
+#video-background {
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -100;
+}
+
+article {
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(black, .2);
-  z-index: 1;
+  right: 0;
+  bottom: 0;
 }
 
 h1 {
-  text-transform: uppercase;
-  font-weight: 900;
-  margin: 0 0 1rem;
-  padding: 0;
-  line-height: 1;
-  font-family: Futura, Helvetica, sans-serif;
-  font-size: 5vw;
-  @media (max-width: 400px) {
-    font-size: 22px;
-  }
-  @media (min-width: 1200px) {
-    font-size: 75px;
-  }
-}
-
-.callout {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
+  position: absolute;
+  top: 30%;
+  width: 100%;
+  font-size: 3.6rem;
+  letter-spacing: 3px;
+  color: #fff;
+  font-family: Oswald, sans-serif;
+  text-shadow: 1px 1px 1px #16a085, 1px 1px 4px #2980b9;
   text-align: center;
-  position: relative;
-  z-index: 10;
 }
 
-.support {
-  position: fixed;
-  bottom: 60px;
-  right: 20px;
-  text-transform: uppercase;
-  font-size: 9px;
-  letter-spacing: 1px;
-  text-align: right;
+h2 {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  font-size: 3.6rem;
+  letter-spacing: 3px;
+  color: #fff;
+  font-family: Oswald, sans-serif;
+  text-shadow: 1px 1px 1px #16a085, 1px 1px 4px #2980b9;
+  text-align: center;
+}
+
+button {
   position: relative;
-  z-index: 10;
-  a {
-    color: white;
-    text-decoration: none;
-    position: relative;
-    display: inline-block;
-    margin-top: 10px;
-    &:before {
-      display: block;
-      position: absolute;
-      content: '';
-      bottom: -2px;
-      width: 0;
-      height: 1px;
-      background-color: rgba(white, .3);
-      transition: .3s;
-    }
-    &:hover:before {
-      width: 100%;
-    }
-  }
+  border-radius: 5px;
+  border: 0;
+  font-size: 1.5rem;
+  font-family: Oswald, sans-serif;
+  color: #fff;
+  background-color: #2980b9;
+  padding: .4em;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+button:hover {
+  background-color: #3498db;
 }
 
   </style>
@@ -135,20 +92,15 @@ h1 {
   <body>
    
 
-<section class="video-container">
-  <video src="https://user-images.githubusercontent.com/54853098/152940811-c4a08617-02a9-41a9-8147-3d59d2760f79.mp4" autoplay loop playsinline muted></video>
-  <div class="callout">
-    <div class="text">
-      <p>test</p>
-    </div>
-    <h1>Object-Fit 👍</h1>
-    <div>The CSS Background-Size: Cover for Inline Images &amp; Videos</div>
-  </div>
-  <div class="support">
-     <a href="http://caniuse.com/#search=object-fit">Browser Support</a><br>
-     <a href="https://github.com/jonathantneal/fitie">Need to support IE &amp; Edge?</a>
-  </div>
-</section>
+<article>
+  <h1>Coafor Claudia</h1>
+  <h2>Acesta este un test nu este gata inca</h2>
+</article>
+
+<video autoplay loop id="video-background" poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148422/screencap-wheel.png" muted>
+  <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148422/Vienna-SD.mp4" type="video/mp4">
+</video>
 
 </body>
+</html>
 </html>
